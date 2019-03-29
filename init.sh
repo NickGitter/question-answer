@@ -37,7 +37,7 @@ then
         printOk "ON question-answer app."
         exit 0
     fi
-    if [[ $1 == "stop" ]] # And first argument == "stop".
+    if [[ $1 == "off" ]] # And first argument == "off".
     then
         echo "* OFF mode."
         sudo /etc/init.d/nginx stop # Stop Nginx.
@@ -45,7 +45,7 @@ then
         exit 0
     fi
     printErr "Unknown arguments are given."
-    echo "Usage: ./init.sh [ on | stop ]"
+    echo "Usage: ./init.sh [ on | off ]"
     exit 1
 else
     echo "* INIT mode."
