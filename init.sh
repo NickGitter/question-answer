@@ -27,6 +27,23 @@ printOk() { # "ok message"
     echo "$1"
 }
 
+# Checking arguments of this script.
+if [[ $# -gt 0 ]] # If count of arguments > 0.
+then
+    if [[ $1 == "stop" ]] # And first argument == "stop".
+    then
+        echo "* OFF mode."
+        sudo /etc/init.d/nginx stop # Stop Nginx.
+        printOk "OFF question-answer app."
+        exit 0
+    fi
+    printErr "Unknown arguments are given."
+    echo "Usage: ./init.sh [ stop ]"
+    exit 1
+else
+    echo "* INIT mode."
+fi
+
 echo "Start initializing..."
 
 #sudo apt-get install nginx
