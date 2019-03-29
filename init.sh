@@ -58,9 +58,12 @@ currentDir=`pwd` # Getting path to the current directory.
     echo ""
     echo ""
 } > $nginxConfig
-echo "Nginx configuration is set up."
+echo "Nginx configuration is set."
 
+# Getting full path to the local Nginx config file.
+fullPathNginx="${currentDir}/${nginxConfig}"
 
+echo $fullPathNginx
 
 echo "Initializing complete."
 exit 0
