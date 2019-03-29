@@ -30,6 +30,9 @@ do
     createDir $dir
 done
 
+# Creating config file to configure Nginx.
+nginxConfig="./etc/nginx.conf"
+
 
 
 echo "Initializing complete."
