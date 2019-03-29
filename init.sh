@@ -73,7 +73,10 @@ then
     echo "Default configuration for Nginx is deleted."
 fi
 
+# Getting path for symbolic link to local Nginx config.
+linkToNginxConfig="/etc/nginx/sites-enabled/qa.conf"
 
+echo $linkToNginxConfig
 
 echo "Initializing complete."
 exit 0
