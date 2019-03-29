@@ -14,6 +14,12 @@ dirs=( # List of directories for creating.
     "./css"
     "./js")
 
+for dir in ${dirs[@]}
+do
+    # Creating directories from the list.
+    mkdir $dir
+done
+
 
 
 echo "Initializing complete."
