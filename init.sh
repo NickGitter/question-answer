@@ -31,7 +31,7 @@ do
 done
 
 # Creating config file to configure Nginx.
-nginxConfig="./etc/nginx.conf"
+nginxConfig="etc/nginx.conf"
 if [[ ! -f "$nginxConfig" ]]
 then
     touch $nginxConfig
@@ -76,7 +76,34 @@ fi
 # Getting path for symbolic link to local Nginx config.
 linkToNginxConfig="/etc/nginx/sites-enabled/qa.conf"
 
-echo $linkToNginxConfig
+# Checking link to local Nginx configuration.
+echo "Checking link to local Nginx config..."
+if [[ -e "$linkToNginxConfig" ]]
+then
+    # Checking link.
+    pathLink=`readlink $linkToNginxConfig`
+    if [[ "$pathLink" != "$fullPathNginx" ]]
+    then
+        echo -en "[\033[31;1m Error \033[0m] " # Red output.
+        echo "Wrong link to local Nginx config."
+        sudo ln -sf "${fullPathNginx}" "${linkToNginxConfig}"
+        echo -en "[\033[32;1m Ok \033[0m] " # Green output.
+        echo "Local config of Nginx is included to the main config."
+    else
+        # Check passed successfully.
+        echo -en "[\033[32;1m Ok \033[0m] " # Green output.
+        echo "Check passed successfully."
+    fi
+else
+    # Creating link.
+    echo -en "[\033[31;1m Error \033[0m] " # Red output.
+    echo "Link to local Nginx config is not exist."
+    sudo ln -sf "${fullPathNginx}" "${linkToNginxConfig}"
+    echo -en "[\033[32;1m Ok \033[0m] " # Green output.
+    echo "Link to local Nginx config is created."
+fi
+
+
 
 echo "Initializing complete."
 exit 0
