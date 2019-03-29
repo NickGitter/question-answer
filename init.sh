@@ -9,6 +9,11 @@ echo "Start initializing..."
 
 #sudo apt-get install nginx
 
+dirs=( # List of directories for creating.
+    "./etc"
+    "./css"
+    "./js")
+
 
 
 echo "Initializing complete."
