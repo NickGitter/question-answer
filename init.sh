@@ -27,19 +27,24 @@ printOk() { # "ok message"
     echo "$1"
 }
 
+# Function for printing an mode message.
+printMode() { # "mode message"
+    echo -e "\033[34;22m${1}\033[0m"
+}
+
 # Checking arguments of this script.
 if [[ $# -gt 0 ]] # If count of arguments > 0.
 then
     if [[ $1 == "on" ]] # And first argument == "on".
     then
-        echo "* ON mode."
+        printMode "* ON mode."
         sudo /etc/init.d/nginx start # Start Nginx.
         printOk "ON question-answer app."
         exit 0
     fi
     if [[ $1 == "off" ]] # And first argument == "off".
     then
-        echo "* OFF mode."
+        printMode "* OFF mode."
         sudo /etc/init.d/nginx stop # Stop Nginx.
         printOk "OFF question-answer app."
         exit 0
@@ -48,7 +53,7 @@ then
     echo "Usage: ./init.sh [ on | off ]"
     exit 1
 else
-    echo "* INIT mode."
+    printMode "* INIT mode."
 fi
 
 echo "Start initializing..."
