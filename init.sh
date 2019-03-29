@@ -40,6 +40,26 @@ fi
 
 currentDir=`pwd` # Getting path to the current directory.
 
+# Rewrites Nginx config file.
+{
+    echo ""
+    echo "server {"
+    echo "    listen 80 default;" # Port 80, any domains.
+    echo "    location ^~ /css/ {"
+    echo "        root ${currentDir};"
+    echo "    }"
+    echo "    location ^~ /js/ {"
+    echo "        root ${currentDir};"
+    echo "    }"
+    echo "    location / {"
+    echo "        return 404;"
+    echo "    }"
+    echo "}"
+    echo ""
+    echo ""
+} > $nginxConfig
+echo "Nginx configuration is set up."
+
 
 
 echo "Initializing complete."
