@@ -32,6 +32,11 @@ done
 
 # Creating config file to configure Nginx.
 nginxConfig="./etc/nginx.conf"
+if [[ ! -f $nginxConfig ]]
+then
+    touch $nginxConfig
+    echo "Config file for Nginx created."
+fi
 
 
 
