@@ -15,6 +15,12 @@ createDir() { # "path"
     fi
 }
 
+# Function for printing an error message on the terminal.
+printErr() { # "error message"
+    echo -en "[\033[31;22m Error \033[0m] "
+    echo "$1"
+}
+
 echo "Start initializing..."
 
 #sudo apt-get install nginx
@@ -84,8 +90,7 @@ then
     pathLink=`readlink $linkToNginxConfig`
     if [[ "$pathLink" != "$fullPathNginx" ]]
     then
-        echo -en "[\033[31;1m Error \033[0m] " # Red output.
-        echo "Wrong link to local Nginx config."
+        printErr "Wrong link to local Nginx config."
         sudo ln -sf "${fullPathNginx}" "${linkToNginxConfig}"
         echo -en "[\033[32;1m Ok \033[0m] " # Green output.
         echo "Local config of Nginx is included to the main config."
@@ -96,8 +101,7 @@ then
     fi
 else
     # Creating link.
-    echo -en "[\033[31;1m Error \033[0m] " # Red output.
-    echo "Link to local Nginx config is not exist."
+    printErr "Link to local Nginx config is not exist."
     sudo ln -sf "${fullPathNginx}" "${linkToNginxConfig}"
     echo -en "[\033[32;1m Ok \033[0m] " # Green output.
     echo "Link to local Nginx config is created."
