@@ -30,6 +30,13 @@ printOk() { # "ok message"
 # Checking arguments of this script.
 if [[ $# -gt 0 ]] # If count of arguments > 0.
 then
+    if [[ $1 == "on" ]] # And first argument == "on".
+    then
+        echo "* ON mode."
+        sudo /etc/init.d/nginx start # Start Nginx.
+        printOk "ON question-answer app."
+        exit 0
+    fi
     if [[ $1 == "stop" ]] # And first argument == "stop".
     then
         echo "* OFF mode."
@@ -38,7 +45,7 @@ then
         exit 0
     fi
     printErr "Unknown arguments are given."
-    echo "Usage: ./init.sh [ stop ]"
+    echo "Usage: ./init.sh [ on | stop ]"
     exit 1
 else
     echo "* INIT mode."
