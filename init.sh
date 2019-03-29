@@ -21,6 +21,12 @@ printErr() { # "error message"
     echo "$1"
 }
 
+# Function for printing an ok message.
+printOk() { # "ok message"
+    echo -en "[\033[32;22m Ok \033[0m] "
+    echo "$1"
+}
+
 echo "Start initializing..."
 
 #sudo apt-get install nginx
@@ -92,19 +98,16 @@ then
     then
         printErr "Wrong link to local Nginx config."
         sudo ln -sf "${fullPathNginx}" "${linkToNginxConfig}"
-        echo -en "[\033[32;1m Ok \033[0m] " # Green output.
-        echo "Local config of Nginx is included to the main config."
+        printOk "Local config of Nginx is included to the main config."
     else
         # Check passed successfully.
-        echo -en "[\033[32;1m Ok \033[0m] " # Green output.
-        echo "Check passed successfully."
+        printOk "Check passed successfully."
     fi
 else
     # Creating link.
     printErr "Link to local Nginx config is not exist."
     sudo ln -sf "${fullPathNginx}" "${linkToNginxConfig}"
-    echo -en "[\033[32;1m Ok \033[0m] " # Green output.
-    echo "Link to local Nginx config is created."
+    printOk "Link to local Nginx config is created."
 fi
 
 
