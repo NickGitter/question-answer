@@ -11,19 +11,19 @@ createDir() { # "path"
     if [[ ! -d $1 ]]
     then
         mkdir $1
-        echo "Directory \"${1}\" created."
+        echo "Directory \"${1}\" is created."
     fi
 }
 
 # Function for printing an error message on the terminal.
 printErr() { # "error message"
-    echo -en "[\033[31;22m Error \033[0m] "
+    echo -en "[\033[31;22m error \033[0m] "
     echo "$1"
 }
 
 # Function for printing an ok message.
 printOk() { # "ok message"
-    echo -en "[\033[32;22m Ok \033[0m] "
+    echo -en "[\033[32;22m ok \033[0m] "
     echo "$1"
 }
 
@@ -47,7 +47,7 @@ nginxConfig="etc/nginx.conf"
 if [[ ! -f "$nginxConfig" ]]
 then
     touch $nginxConfig
-    echo "Config file for Nginx created."
+    echo "Config file for Nginx is created."
 fi
 
 currentDir=`pwd` # Getting path to the current directory.
@@ -56,7 +56,7 @@ currentDir=`pwd` # Getting path to the current directory.
 {
     echo ""
     echo "server {"
-    echo "    listen 80 default;" # Port 80, any domains.
+    echo "    listen 127.0.0.1:80;"
     echo "    location ^~ /css/ {"
     echo "        root ${currentDir};"
     echo "    }"
@@ -109,6 +109,8 @@ else
     sudo ln -sf "${fullPathNginx}" "${linkToNginxConfig}"
     printOk "Link to local Nginx config is created."
 fi
+
+sudo /etc/init.d/nginx start # Start Nginx.
 
 
 
