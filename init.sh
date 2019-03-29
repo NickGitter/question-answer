@@ -38,6 +38,8 @@ then
     echo "Config file for Nginx created."
 fi
 
+currentDir=`pwd` # Getting path to the current directory.
+
 
 
 echo "Initializing complete."
