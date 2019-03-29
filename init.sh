@@ -32,7 +32,7 @@ done
 
 # Creating config file to configure Nginx.
 nginxConfig="./etc/nginx.conf"
-if [[ ! -f $nginxConfig ]]
+if [[ ! -f "$nginxConfig" ]]
 then
     touch $nginxConfig
     echo "Config file for Nginx created."
@@ -63,7 +63,17 @@ echo "Nginx configuration is set."
 # Getting full path to the local Nginx config file.
 fullPathNginx="${currentDir}/${nginxConfig}"
 
-echo $fullPathNginx
+# Delete the symbolic link to include the default Nginx config file.
+# Delete default Nginx configuration.
+defaultNginxConfig="/etc/nginx/sites-enabled/default"
+if [[ -e "$defaultNginxConfig" ]]
+then
+    # If your Nginx has a default config, delete this config.
+    sudo unlink "$defaultNginxConfig"
+    echo "Default configuration for Nginx is deleted."
+fi
+
+
 
 echo "Initializing complete."
 exit 0
