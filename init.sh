@@ -150,6 +150,14 @@ sudo /etc/init.d/nginx start # Start Nginx.
 #pip list
 #pip3 list
 
+# Creating config file to configure Gunicorn.
+gunicornConfig="etc/conf_gunicorn.py"
+if [[ ! -f "$gunicornConfig" ]]
+then
+    touch $gunicornConfig
+    echo "Config file for Gunicorn is created."
+fi
+
 
 
 echo "Initializing complete."
