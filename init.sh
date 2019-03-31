@@ -161,7 +161,18 @@ fi
 # Getting full path to the local Gunicorn config file.
 fullPathGunicorn="${currentDir}/${gunicornConfig}"
 
-echo "$fullPathGunicorn"
+# Rewrites Gunicorn config file.
+{
+    echo ""
+    echo "import multiprocessing"
+    echo "bind = \"0.0.0.0:8000\"" # Using ip 0.0.0.0 && port 8080.
+    echo "workers = multiprocessing.cpu_count() * 2 + 1"
+    echo ""
+    echo ""
+} > ${gunicornConfig}
+echo "Gunicorn configuration is set."
+
+
 
 echo "Initializing complete."
 exit 0
