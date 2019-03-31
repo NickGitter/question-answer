@@ -158,7 +158,10 @@ then
     echo "Config file for Gunicorn is created."
 fi
 
+# Getting full path to the local Gunicorn config file.
+fullPathGunicorn="${currentDir}/${gunicornConfig}"
 
+echo "$fullPathGunicorn"
 
 echo "Initializing complete."
 exit 0
