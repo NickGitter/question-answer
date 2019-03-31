@@ -141,6 +141,15 @@ fi
 
 sudo /etc/init.d/nginx start # Start Nginx.
 
+#sudo apt-get install gunicorn
+
+#sudo apt-get install python-pip
+#sudo apt-get install python3-pip
+#sudo pip install gunicorn
+#sudo pip3 install gunicorn
+#pip list
+#pip3 list
+
 
 
 echo "Initializing complete."
