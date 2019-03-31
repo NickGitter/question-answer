@@ -172,6 +172,9 @@ fullPathGunicorn="${currentDir}/${gunicornConfig}"
 } > ${gunicornConfig}
 echo "Gunicorn configuration is set."
 
+# Start hello_world.py on Gunicorn server.
+sudo gunicorn -c "${fullPathGunicorn}" hello_world:my_app &
+
 
 
 echo "Initializing complete."

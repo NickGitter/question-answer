@@ -1,6 +1,6 @@
-"
+"""
     *** Hello world app to starting with Gunicorn. ***
-"
+"""
 
 def my_app(environ, start_response):
     text = "Hello World!\n"
