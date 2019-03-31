@@ -85,7 +85,7 @@ currentDir=`pwd` # Getting path to the current directory.
 {
     echo ""
     echo "server {"
-    echo "    listen 127.0.0.1:80;"
+    echo "    listen 127.0.0.1:80;" # Using ip 127.0.0.1 && port 80.
     echo "    location ^~ /css/ {"
     echo "        root ${currentDir};"
     echo "    }"
@@ -165,7 +165,7 @@ fullPathGunicorn="${currentDir}/${gunicornConfig}"
 {
     echo ""
     echo "import multiprocessing"
-    echo "bind = \"0.0.0.0:8000\"" # Using ip 0.0.0.0 && port 8080.
+    echo "bind = \"0.0.0.0:8000\"" # Using ip 0.0.0.0 && port 8000.
     echo "workers = multiprocessing.cpu_count() * 2 + 1"
     echo ""
     echo ""
