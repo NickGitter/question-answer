@@ -71,6 +71,9 @@ printMode() { # "mode message"
     echo -e "\033[34;22m${1}\033[0m"
 }
 
+# Name of Gunicorn config file.
+gunicornConfig="etc/conf_gunicorn.py"
+
 # Checking arguments of this script.
 if [[ $# -gt 0 ]] # If count of arguments > 0.
 then
@@ -78,6 +81,7 @@ then
     then
         printMode "* ON mode."
         sudo /etc/init.d/nginx start # Start Nginx.
+        
         printOk "ON question-answer app."
         exit 0
     fi
@@ -206,7 +210,6 @@ sudo /etc/init.d/nginx start # Start Nginx.
 #pip3 list
 
 # Creating config file to configure Gunicorn.
-gunicornConfig="etc/conf_gunicorn.py"
 if [[ ! -f "$gunicornConfig" ]]
 then
     touch $gunicornConfig
