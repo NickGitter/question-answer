@@ -81,6 +81,7 @@ then
     then
         printMode "* ON mode."
         sudo /etc/init.d/nginx start # Start Nginx.
+        sudo gunicorn -c "./${gunicornConfig}" hello_world:my_app &
         
         printOk "ON question-answer app."
         exit 0
