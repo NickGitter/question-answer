@@ -54,6 +54,12 @@ printErr() { # "error message"
     echo "$1"
 }
 
+# Function for printing an warning message on the terminal.
+printWarning() { # "warning message"
+    echo -en "[\033[33;22m warning \033[0m] "
+    echo "$1"
+}
+
 # Function for printing an ok message.
 printOk() { # "ok message"
     echo -en "[\033[32;22m ok \033[0m] "
@@ -79,6 +85,19 @@ then
     then
         printMode "* OFF mode."
         sudo /etc/init.d/nginx stop # Stop Nginx.
+        isKillGunicorn=`killGunicorn` # Kill Gunicorn.
+        if [[ $isKillGunicorn -eq 0 ]]
+        then
+            printOk "Gunicorn is killed."
+        else
+            if [[ $isKillGunicorn -eq 1 ]]
+            then
+                printWarning "Nothing to stop. No Gunicorn processes."
+            else
+                printErr "In function killGunicorn(): wrong return code."
+            fi
+        fi
+        
         printOk "OFF question-answer app."
         exit 0
     fi
@@ -208,7 +227,19 @@ fullPathGunicorn="${currentDir}/${gunicornConfig}"
 echo "Gunicorn configuration is set."
 
 echo "Killing Gunicorn..."
-killGunicorn # If Gunicorn is running, killing him.
+# If Gunicorn is running, killing him.
+isKillGunicorn=`killGunicorn`
+if [[ $isKillGunicorn -eq 0 ]]
+then
+    printOk "Gunicorn is killed."
+else
+    if [[ $isKillGunicorn -eq 1 ]]
+    then
+        printWarning "Nothing to stop. No Gunicorn processes."
+    else
+        printErr "In function killGunicorn(): wrong return code."
+    fi
+fi
 
 # Start hello_world.py on Gunicorn server.
 sudo gunicorn -c "${fullPathGunicorn}" hello_world:my_app &
