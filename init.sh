@@ -253,6 +253,11 @@ fi
 # Start hello_world.py on Gunicorn server.
 sudo gunicorn -c "${fullPathGunicorn}" "$appForGunicorn" &
 
+#pip3 install django~=2.1.5
+#pip3 list
+#sudo apt-get install python-django
+#sudo apt-get install python3-django
+
 
 
 echo "Initializing complete."
