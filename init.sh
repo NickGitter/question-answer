@@ -15,6 +15,39 @@ createDir() { # "path"
     fi
 }
 
+# Function to killing all processes of Gunicorn.
+killGunicorn() {
+    # Geting pids for all "gunicorn" processes.
+    gunicornPIDs=`ps axu | grep gunicorn | awk '{ print $2 }'`
+    # Creating array with pids of Gunicorn processes.
+    arrPids=($gunicornPIDs)
+    # Getting count of pids.
+    sizeOfArrPids=${#arrPids[@]}
+    if [[ $sizeOfArrPids -eq 1 ]]
+    then
+        return 1
+        # [ warning ] Nothing to stop. No Gunicorn processes.
+    fi
+    # Enumerating all the pids except the last.
+    let "firstIndex=0"
+    let "lastIndex=${sizeOfArrPids}-1"
+    reversePidsStr=""
+    # Looping the pids from first to last.
+    for iPid in ${arrPids[@]:${firstIndex}:${lastIndex}}
+    do
+        reversePidsStr="${iPid} ${reversePidsStr}"
+        # Write pids to the string in reverse order.
+    done
+    # Set the array with pids in reverse order.
+    reverseArrPids=($reversePidsStr)
+    for iPid in ${reverseArrPids[@]}
+    do
+        sudo kill "$iPid"
+    done
+    return 0
+    # [ ok ] Gunicorn is killed.
+}
+
 # Function for printing an error message on the terminal.
 printErr() { # "error message"
     echo -en "[\033[31;22m error \033[0m] "
@@ -173,6 +206,9 @@ fullPathGunicorn="${currentDir}/${gunicornConfig}"
     echo ""
 } > ${gunicornConfig}
 echo "Gunicorn configuration is set."
+
+echo "Killing Gunicorn..."
+killGunicorn # If Gunicorn is running, killing him.
 
 # Start hello_world.py on Gunicorn server.
 sudo gunicorn -c "${fullPathGunicorn}" hello_world:my_app &
