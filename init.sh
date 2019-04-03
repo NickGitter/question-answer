@@ -85,7 +85,8 @@ then
     then
         printMode "* OFF mode."
         sudo /etc/init.d/nginx stop # Stop Nginx.
-        isKillGunicorn=`killGunicorn` # Kill Gunicorn.
+        killGunicorn # Kill Gunicorn.
+        isKillGunicorn=$?
         if [[ $isKillGunicorn -eq 0 ]]
         then
             printOk "Gunicorn is killed."
@@ -228,7 +229,8 @@ echo "Gunicorn configuration is set."
 
 echo "Killing Gunicorn..."
 # If Gunicorn is running, killing him.
-isKillGunicorn=`killGunicorn`
+killGunicorn
+isKillGunicorn=$?
 if [[ $isKillGunicorn -eq 0 ]]
 then
     printOk "Gunicorn is killed."
