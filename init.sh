@@ -86,6 +86,8 @@ currentDir=`pwd` # Getting path to the current directory.
     echo ""
     echo "server {"
     echo "    listen 127.0.0.1:80;" # Using ip 127.0.0.1 && port 80.
+    echo "    proxy_set_header Host \$proxy_host;"
+    echo "    proxy_set_header X-Real-IP \$remote_addr;"
     echo "    location ^~ /css/ {"
     echo "        root ${currentDir};"
     echo "    }"
@@ -93,7 +95,7 @@ currentDir=`pwd` # Getting path to the current directory.
     echo "        root ${currentDir};"
     echo "    }"
     echo "    location / {"
-    echo "        return 404;"
+    echo "        proxy_pass http://0.0.0.0:8000;"
     echo "    }"
     echo "}"
     echo ""
