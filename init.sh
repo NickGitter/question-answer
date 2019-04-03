@@ -74,6 +74,9 @@ printMode() { # "mode message"
 # Name of Gunicorn config file.
 gunicornConfig="etc/conf_gunicorn.py"
 
+# Name of app for starting with Gunicorn.
+appForGunicorn="hello_world:my_app"
+
 # Checking arguments of this script.
 if [[ $# -gt 0 ]] # If count of arguments > 0.
 then
@@ -81,7 +84,7 @@ then
     then
         printMode "* ON mode."
         sudo /etc/init.d/nginx start # Start Nginx.
-        sudo gunicorn -c "./${gunicornConfig}" hello_world:my_app &
+        sudo gunicorn -c "./${gunicornConfig}" "$appForGunicorn" &
         
         printOk "ON question-answer app."
         exit 0
@@ -248,7 +251,7 @@ else
 fi
 
 # Start hello_world.py on Gunicorn server.
-sudo gunicorn -c "${fullPathGunicorn}" hello_world:my_app &
+sudo gunicorn -c "${fullPathGunicorn}" "$appForGunicorn" &
 
 
 
