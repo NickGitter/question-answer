@@ -74,9 +74,6 @@ printMode() { # "mode message"
 # Name of Gunicorn config file.
 gunicornConfig="etc/conf_gunicorn.py"
 
-# Name of app for starting with Gunicorn.
-appForGunicorn="hello_world:my_app"
-
 # Checking arguments of this script.
 if [[ $# -gt 0 ]] # If count of arguments > 0.
 then
@@ -250,8 +247,10 @@ else
     fi
 fi
 
-# Start hello_world.py on Gunicorn server.
-sudo gunicorn -c "${fullPathGunicorn}" "$appForGunicorn" &
+# Start Django application "qa" on Gunicorn server with ip=0.0.0.0 and port=8000.
+cd ask/
+sudo gunicorn -c "${fullPathGunicorn}" "ask.wsgi:application" &
+cd - >> /dev/null
 
 #pip3 install django~=2.1.5
 #pip3 list
