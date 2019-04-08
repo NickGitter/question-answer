@@ -82,7 +82,7 @@ then
         printMode "* ON mode."
         sudo /etc/init.d/nginx start # Start Nginx.
         cd ask/
-        sudo gunicorn -c "${fullPathGunicorn}" "ask.wsgi:application" &
+        sudo gunicorn -c "../${gunicornConfig}" "ask.wsgi:application" &
         cd - >> /dev/null
         sudo /etc/init.d/mysql start # Start mysql!
         printOk "ON question-answer app."
