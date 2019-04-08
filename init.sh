@@ -280,6 +280,9 @@ sudo /etc/init.d/mysql start # Start mysql!
 # Show mysql user table.
 #sudo mysql -uroot -e "select User, Host from mysql.user;"
 
+User="myUserKurabie"
+Host="localhost"
+
 
 
 echo "Initializing complete."
