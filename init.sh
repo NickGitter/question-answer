@@ -265,6 +265,14 @@ cd - >> /dev/null
 #django-admin startapp qa
 #cd ..
 
+#sudo apt-get install mysql-server
+#sudo apt-get install mysql-client
+#sudo apt-get install python-mysqldb
+#sudo apt-get install python3-mysqldb
+
+#sudo pip install pymysql
+#sudo pip3 install pymysql
+
 
 
 echo "Initializing complete."
