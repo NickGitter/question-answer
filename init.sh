@@ -273,6 +273,8 @@ cd - >> /dev/null
 #sudo pip install pymysql
 #sudo pip3 install pymysql
 
+sudo /etc/init.d/mysql start # Start mysql!
+
 
 
 echo "Initializing complete."
