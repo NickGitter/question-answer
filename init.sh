@@ -289,9 +289,15 @@ isUser=`sudo mysql -uroot -e \
 
 if [[ "${isUser}" == "${User}" ]]
 then
-    echo "YES"
+    echo "User '${User}'@'${Host}' is exist."
 else
-    echo "NO"
+    # Creating user 'myUserKurabie'.
+    sudo mysql -uroot -e "create user '${User}'@'${Host}' identified by '';"
+    sudo mysql -uroot -e "grant all privileges on * . * to '${User}'@'${Host}';"
+    sudo mysql -uroot -e "flush privileges;"
+    echo "Created user '${User}'@'${Host}'."
+    sudo mysql -uroot -e \
+        "select User, Host from mysql.user where User='${User}';"
 fi
 
 
