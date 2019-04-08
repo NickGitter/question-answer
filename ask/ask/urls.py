@@ -16,9 +16,10 @@ Including another URLconf
 from django.contrib import admin
 #from django.conf.urls import path
 from django.conf.urls import url, include
+from qa.views import my_test
 
 urlpatterns = [
-    url('admin/', admin.site.urls),
+    url(r'^test(/)?$', my_test),
 ]
 
 
