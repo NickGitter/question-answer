@@ -258,6 +258,9 @@ sudo gunicorn -c "${fullPathGunicorn}" "$appForGunicorn" &
 #sudo apt-get install python-django
 #sudo apt-get install python3-django
 
+#Create Django project called "ask".
+#django-admin startproject ask
+
 
 
 echo "Initializing complete."
