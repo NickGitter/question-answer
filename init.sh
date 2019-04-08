@@ -82,7 +82,7 @@ then
         printMode "* ON mode."
         sudo /etc/init.d/nginx start # Start Nginx.
         sudo gunicorn -c "./${gunicornConfig}" "$appForGunicorn" &
-        
+        sudo /etc/init.d/mysql start # Start mysql!
         printOk "ON question-answer app."
         exit 0
     fi
@@ -103,7 +103,7 @@ then
                 printErr "In function killGunicorn(): wrong return code."
             fi
         fi
-        
+        sudo /etc/init.d/mysql stop # Stop mysql.
         printOk "OFF question-answer app."
         exit 0
     fi
