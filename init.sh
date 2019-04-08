@@ -261,6 +261,11 @@ sudo gunicorn -c "${fullPathGunicorn}" "$appForGunicorn" &
 #Create Django project called "ask".
 #django-admin startproject ask
 
+#Create Django application called "qa".
+#cd ask
+#django-admin startapp qa
+#cd ..
+
 
 
 echo "Initializing complete."
