@@ -283,6 +283,17 @@ sudo /etc/init.d/mysql start # Start mysql!
 User="myUserKurabie"
 Host="localhost"
 
+# Check whether user "myUserKurabie" exists or not.
+isUser=`sudo mysql -uroot -e \
+    "select User from mysql.user where User='${User}';" | grep "^${User}$"`
+
+if [[ "${isUser}" == "${User}" ]]
+then
+    echo "YES"
+else
+    echo "NO"
+fi
+
 
 
 echo "Initializing complete."
