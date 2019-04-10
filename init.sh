@@ -314,6 +314,7 @@ else
     sudo mysql -uroot -e \
         "grant all privileges on ${dbName}.* to '${User}'@'${Host}' with grant option;"
     echo "Created database '${dbName}'."
+    sudo mysql -uroot -e "show databases like '${dbName}';"
 fi
 
 # Creating tables for the models.
