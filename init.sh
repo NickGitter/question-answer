@@ -316,7 +316,7 @@ else
     echo "Created database '${dbName}'."
 fi
 
-# Creating tables for models.
+# Creating tables for the models.
 sudo python3 ./ask/manage.py makemigrations
 sudo python3 ./ask/manage.py migrate
 
