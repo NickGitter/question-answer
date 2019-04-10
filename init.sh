@@ -316,6 +316,9 @@ else
     echo "Created database '${dbName}'."
 fi
 
+# View tables in the database "qa_db".
+sudo mysql -uroot -e "show tables from ${dbName};"
+
 
 
 echo "Initializing complete."
