@@ -322,6 +322,7 @@ sudo python3 ./ask/manage.py makemigrations
 sudo python3 ./ask/manage.py migrate
 
 # View tables in the database "qa_db".
+sudo mysql -uroot -e "show databases like '${dbName}';"
 sudo mysql -uroot -e "show tables from ${dbName};"
 
 
