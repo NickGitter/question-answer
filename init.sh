@@ -303,7 +303,10 @@ fi
 # Creatiing database called "qa_db".
 dbName="qa_db"
 
+# Check for existence for the database.
+listOfDatabases=$( sudo mysql -uroot -e "show databases;" )
 
+echo "$listOfDatabases"
 
 echo "Initializing complete."
 exit 0
