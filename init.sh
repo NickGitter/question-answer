@@ -304,9 +304,16 @@ fi
 dbName="qa_db"
 
 # Check for existence for the database.
-listOfDatabases=$( sudo mysql -uroot -e "show databases;" )
+isDB=$( sudo mysql -uroot -e "show databases;" | grep "^${dbName}$" )
 
-echo "$listOfDatabases"
+if [[ "${isDB}" == "${dbName}" ]]
+then
+    echo "YES"
+else
+    echo "NO"
+fi
+
+
 
 echo "Initializing complete."
 exit 0
