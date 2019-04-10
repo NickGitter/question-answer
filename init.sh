@@ -300,7 +300,7 @@ else
         "select User, Host from mysql.user where User='${User}';"
 fi
 
-# Creatiing database called "qa_db".
+# Creating database called "qa_db".
 dbName="qa_db"
 
 # Check for existence for the database.
@@ -308,9 +308,12 @@ isDB=$( sudo mysql -uroot -e "show databases;" | grep "^${dbName}$" )
 
 if [[ "${isDB}" == "${dbName}" ]]
 then
-    echo "YES"
+    echo "Database '${dbName}' is exist."
 else
-    echo "NO"
+    sudo mysql -uroot -e "create database ${dbName};"
+    sudo mysql -uroot -e \
+        "grant all privileges on ${dbName}.* to '${User}'@'${Host}' with grant option;"
+    echo "Created database '${dbName}'."
 fi
 
 
