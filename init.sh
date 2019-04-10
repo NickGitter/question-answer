@@ -300,6 +300,9 @@ else
         "select User, Host from mysql.user where User='${User}';"
 fi
 
+# Creatiing database called "qa_db".
+dbName="qa_db"
+
 
 
 echo "Initializing complete."
