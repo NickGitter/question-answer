@@ -152,4 +152,13 @@ def user_login(request, *args, **kwargs):
             'error': error,
         })
 
+def user_logout(request, *args, **kwargs):
+    user = request.user
+    if user.is_authenticated():
+        username = user.username
+        print('User %s is logout.' % username)
+    logout(request)
+    url = '/'
+    return HttpResponseRedirect(url)
+
 
