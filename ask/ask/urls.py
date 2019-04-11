@@ -19,13 +19,13 @@ from django.conf.urls import url, include
 from qa.views import my_test, main_page, popular_page, one_question
 
 urlpatterns = [
-    url(r'^(/)?$', my_test),
+    url(r'^(/)?$', main_page),
     url(r'^login(/)?$', my_test),
     url(r'^logout(/)?$', my_test),
     url(r'^signup(/)?$', my_test),
-    url(r'^question\/(?P<id>\d+)(\/)$', my_test),
+    url(r'^question\/(?P<id>\d+)(\/)$', one_question),
     url(r'^ask(/)?$', my_test),
-    url(r'^popular(/)?$', my_test),
+    url(r'^popular(/)?$', popular_page),
     url(r'^new(/)?$', my_test),
     url(r'^test(/)?$', my_test),
 ]
