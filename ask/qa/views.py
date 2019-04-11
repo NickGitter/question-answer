@@ -29,15 +29,25 @@ def my_test(request, *args, **kwargs):
 @require_GET
 def main_page(request, *args, **kwargs):
     questions = Question.objects.new()
+    page = my_paginate(request, questions)
+    paginator = page.paginator
+    paginator.baseurl = '/?page='
     return render(request, 'list_of_questions.html', {
-        'questions': questions,
+        'questions': page.object_list,
+        'paginator': paginator,
+        'page': page,
     })
 
 @require_GET
 def popular_page(request, *args, **kwargs):
     questions = Question.objects.popular()
+    page = my_paginate(request, questions)
+    paginator = page.paginator
+    paginator.baseurl = '/popular/?page='
     return render(request, 'list_of_questions.html', {
-        'questions': questions,
+        'questions': page.object_list,
+        'paginator': paginator,
+        'page': page,
     })
 
 def one_question(request, id):
