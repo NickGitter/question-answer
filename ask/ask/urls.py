@@ -16,7 +16,8 @@ Including another URLconf
 from django.contrib import admin
 #from django.conf.urls import path
 from django.conf.urls import url, include
-from qa.views import my_test, main_page, popular_page, ask_add, answer_add
+from qa.views import my_test, main_page, popular_page, ask_add, answer_add,
+    signup, user_login, user_logout
 
 urlpatterns = [
     url(r'^(/)?$', main_page),
