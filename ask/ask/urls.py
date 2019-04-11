@@ -16,15 +16,15 @@ Including another URLconf
 from django.contrib import admin
 #from django.conf.urls import path
 from django.conf.urls import url, include
-from qa.views import my_test, main_page, popular_page, one_question
+from qa.views import my_test, main_page, popular_page, ask_add, answer_add
 
 urlpatterns = [
     url(r'^(/)?$', main_page),
     url(r'^login(/)?$', my_test),
     url(r'^logout(/)?$', my_test),
     url(r'^signup(/)?$', my_test),
-    url(r'^question\/(?P<id>\d+)(\/)$', one_question),
-    url(r'^ask(/)?$', my_test),
+    url(r'^question\/(?P<id>\d+)(\/)$', answer_add),
+    url(r'^ask(/)?$', ask_add),
     url(r'^popular(/)?$', popular_page),
     url(r'^new(/)?$', my_test),
     url(r'^test(/)?$', my_test),
