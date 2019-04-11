@@ -100,4 +100,27 @@ class SignupForm(forms.Form):
         user.save()
         return user
 
+class LoginForm(forms.Form):
+    username = forms.CharField(max_length=100)
+    password = forms.CharField(widget=forms.PasswordInput, max_length=254)
+    
+    def clean(self):
+        return self.cleaned_data
+    
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        return username
+    
+    def clean_password(self):
+        password = self.cleaned_data['password']
+        return password
+    
+    def save(self):
+        username = self.cleaned_data['username']
+        password = self.cleaned_data['password']
+        return {
+            'uname': username,
+            'upass': password,
+        }
+
 
