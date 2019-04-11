@@ -7,6 +7,9 @@ from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.views.decorators.http import require_GET
 from django.core.paginator import Paginator
 
+from django.contrib.auth.models import User
+from django.contrib.auth import authenticate, login, logout
+
 from qa.models import Question, Answer
 from qa.forms import AskForm, AnswerForm, SignupForm, LoginForm
 
@@ -91,6 +94,28 @@ def answer_add(request, id):
             'text': question.text,
             'author': question.author,
             'answers': answers,
+            'form': form,
+        })
+
+def signup(request, *args, **kwargs):
+    if request.method == "POST":
+        form = SignupForm(request.POST)
+        if form.is_valid() == True:
+            form.save()
+            my_username = form.cleaned_data['username']
+            my_password = form.cleaned_data['password']
+            user = authenticate(username=my_username, password=my_password)
+            login(request, user)
+            print('User %s is created!' % my_username)
+            url = '/'
+            return HttpResponseRedirect(url)
+        else:
+            return render(request, 'signup.html', {
+            'form': form,
+        })
+    else:
+        form = SignupForm()
+        return render(request, 'signup.html', {
             'form': form,
         })
 
