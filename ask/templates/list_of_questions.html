@@ -1,0 +1,44 @@
+
+<!-- *** List of questions. *** -->
+
+{% extends "base_template.html" %}
+
+{% block TITLE %}
+List of questions
+{% endblock %}
+
+{% block MAIN %}
+<main>
+    <h1>List of questions</h1>
+    
+    <div>
+        {% for question in questions %}
+        <div>
+            <p>Question {{ question.pk }}</p>
+            <p>{{ question.title }}</p>
+            <p>Author: {{ question.author.username }}</p>
+            <div>
+                <a href="{{ question.get_absolute_url }}">Open</a>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+        
+    <nav>
+        <ul>
+        {% for i in paginator.page_range %}
+            {% if i == page.number %}
+            <li class="Active">
+            {% else %}
+            <li>
+            {% endif %}
+                <a href="{{ paginator.baseurl }}{{ i }}">{{ i }}</a>
+            </li>
+        {% endfor %}
+        </ul>
+    </nav>
+    
+</main>
+{% endblock %}
+
+
