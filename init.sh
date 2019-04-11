@@ -325,6 +325,12 @@ sudo python3 ./ask/manage.py migrate
 sudo mysql -uroot -e "show databases like '${dbName}';"
 sudo mysql -uroot -e "show tables from ${dbName};"
 
+# Create superuser!
+#python3 ask/manage.py createsuperuser
+# Username = "superkurabie"
+# Email = "ezx363@yandex.ru"
+# Password = "superpassword"
+
 
 
 echo "Initializing complete."
