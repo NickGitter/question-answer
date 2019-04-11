@@ -119,4 +119,37 @@ def signup(request, *args, **kwargs):
             'form': form,
         })
 
+def user_login(request, *args, **kwargs):
+    error = '' # Error msg - "Incorrect username or password.".
+    if request.method == "POST":
+        form = LoginForm(request.POST)
+        if form.is_valid() == True:
+            my_login = form.save()
+            username = my_login['uname']
+            password = my_login['upass']
+            url = '/'
+            user = authenticate(username=username, password=password)
+            if user != None:
+                login(request, user)
+                print('User %s is logged.' % username)
+                response = HttpResponseRedirect(url)
+                return response
+            error = 'Incorrect username or password.'
+            print('Incorrect username or password for user=%s' % username)
+            return render(request, 'login.html', {
+                'form': form,
+                'error': error,
+            })
+        else:
+            return render(request, 'login.html', {
+                'form': form,
+                'error': error,
+            })
+    else:
+        form = LoginForm()
+        return render(request, 'login.html', {
+            'form': form,
+            'error': error,
+        })
+
 
