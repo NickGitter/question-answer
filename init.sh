@@ -331,6 +331,9 @@ sudo mysql -uroot -e "show tables from ${dbName};"
 # Email = "ezx363@yandex.ru"
 # Password = "superpassword"
 
+# Show table of users.
+# sudo mysql -uroot -e "select is_superuser, username, email, is_active from qa_db.auth_user;"
+
 
 
 echo "Initializing complete."
