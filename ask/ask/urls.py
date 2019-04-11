@@ -21,9 +21,9 @@ from qa.views import my_test, main_page, popular_page, ask_add, answer_add,
 
 urlpatterns = [
     url(r'^(/)?$', main_page),
-    url(r'^login(/)?$', my_test),
-    url(r'^logout(/)?$', my_test),
-    url(r'^signup(/)?$', my_test),
+    url(r'^login(/)?$', user_login),
+    url(r'^logout(/)?$', user_logout),
+    url(r'^signup(/)?$', signup),
     url(r'^question\/(?P<id>\d+)(\/)$', answer_add),
     url(r'^ask(/)?$', ask_add),
     url(r'^popular(/)?$', popular_page),
