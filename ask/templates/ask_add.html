@@ -11,8 +11,26 @@ Ask
 <main>
     <h1>Add your question:</h1>
     
+    <div>
+    {% for err in form.non_field_errors %}
+        <p>{{ err }}</p>
+    {% endfor %}
+    </div>
     
-
+    <form method="post" action="/ask/">
+    {% csrf_token %}
+        <fieldset>
+        {% for field in form %}
+            <div class="ControlGroup {% if field.errors %}HasError{% endif %}">
+                <label>{{ field.label }}</label>
+                <div>{{ field }}</div>
+            </div>
+        {% endfor %}
+        </fieldset>
+        <div class="FormActions">
+            <button type="submit">Save</button>
+        </div>
+    </form>
 </main>
 {% endblock %}
 
