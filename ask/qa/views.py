@@ -131,7 +131,7 @@ def user_login(request, *args, **kwargs):
             user = authenticate(username=username, password=password)
             if user != None:
                 login(request, user)
-                print('User %s is logged.' % username)
+                print('User %s is login.' % username)
                 response = HttpResponseRedirect(url)
                 return response
             error = 'Incorrect username or password.'
