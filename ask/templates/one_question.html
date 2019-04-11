@@ -20,6 +20,25 @@ Question
     <div>
         <p>Add answer:</p>
         
+        <div>
+        {% for err in form.non_field_errors %}
+            <p>{{ err }}</p>
+        {% endfor %}
+        <div>
+        
+        <form method="post" action="/question/{{ id }}/">
+        {% csrf_token %}
+            <fieldset>
+            {% for field in form %}
+                <div class="ControlGroup {% if field.errors %}HasError{% endif %}">
+                        <div>{{ field }}</div>
+                </div>
+            {% endfor %}
+            </fieldset>
+            <div class="FormActions">
+                <button type="submit">Add</button>
+            </div>
+        </form>
     </div>
     
     <div>
