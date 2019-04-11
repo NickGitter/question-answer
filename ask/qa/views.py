@@ -59,8 +59,10 @@ def one_question(request, id):
     except Answer.DoesNotExist:
         answers = []
     return render(request, 'one_question.html', {
+        'id': id,
         'title': question.title,
         'text': question.text,
+        'author': question.author,
         'answers': answers,
     })
 

@@ -1,0 +1,39 @@
+
+<!-- *** One question. *** -->
+
+{% extends "base_template.html" %}
+
+{% block TITLE %}
+Question
+{% endblock %}
+
+{% block MAIN %}
+<main>
+    <h1>Question {{ id }}</h1>
+    
+    <div>
+        <p>{{ title }}</p>
+        <p>{{ text }}</p>
+        <p>Author: {{ author.username }}</p>
+    </div>
+    
+    <div>
+        <p>Add answer:</p>
+        
+    </div>
+    
+    <div>
+        <p>Answers:</p>
+        {% for answer in answers %}
+        <div>
+            <p>Answer {{ answer.pk }}</p>
+            <p>{{ answer.text }}</p>
+            <p>Author: {{ answer.author.username }}</p>
+        </div>
+        {% endfor %}
+    </div>
+    
+</main>
+{% endblock %}
+
+
