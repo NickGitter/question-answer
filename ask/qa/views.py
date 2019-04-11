@@ -51,22 +51,6 @@ def popular_page(request, *args, **kwargs):
         'page': page,
     })
 
-def one_question(request, id):
-    question = get_object_or_404(Question, id=id)
-    try:
-        answers = Answer.objects.filter(question=question)
-        answers = answers.order_by('-added_at')
-        answers = answers[0:]
-    except Answer.DoesNotExist:
-        answers = []
-    return render(request, 'one_question.html', {
-        'id': id,
-        'title': question.title,
-        'text': question.text,
-        'author': question.author,
-        'answers': answers,
-    })
-
 def ask_add(request, *args, **kwargs):
     user = request.user
     if request.method == "POST":
