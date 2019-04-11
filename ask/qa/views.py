@@ -81,4 +81,33 @@ def ask_add(request, *args, **kwargs):
             'form': form
         })
 
+# The question page with form for added an answer.
+def answer_add(request, id):
+    user = request.user
+    question = get_object_or_404(Question, id = id)
+    if request.method == "POST":
+        form = AnswerForm(request.POST)
+        if form.is_valid() == True:
+            answer = form.save(question, user)
+            url = '/question/%d/' % int(id)
+            return HttpResponseRedirect(url)
+        if form.is_valid() == False:
+            return HttpResponse('200')
+    else:
+        try:
+            answers = Answer.objects.filter(question = question)
+            answers = answers.order_by('-added_at')
+            answers = answers[0:]
+        except Answer.DoesNotExist:
+            answers = []
+        form = AnswerForm( initial={'question': question.id} )
+        return render(request, 'one_question.html', {
+            'id': id,
+            'title': question.title,
+            'text': question.text,
+            'author': question.author,
+            'answers': answers,
+            'form': form,
+        })
+
 
