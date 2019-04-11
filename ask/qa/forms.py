@@ -57,4 +57,47 @@ class AnswerForm(forms.Form):
         answer.save()
         return answer
 
+class SignupForm(forms.Form):
+    username = forms.CharField(max_length=100)
+    email = forms.EmailField(max_length=100)
+    password = forms.CharField(widget=forms.PasswordInput, max_length=254)
+    
+    def clean(self):
+        uname = self.cleaned_data['username']
+        check = False
+        try:
+            User.objects.get(username=uname)
+        except User.DoesNotExist:
+            check = True
+        if check == False:
+            raise forms.ValidationError('User %s is existing!' % uname)
+        uemail = self.cleaned_data['email']
+        check = False
+        try:
+            User.objects.get(email=uemail)
+        except User.DoesNotExist:
+            check = True
+        except User.MultipleObjectsReturned:
+            check = False
+        if check == False:
+            raise forms.ValidationError('Email %s already used!' % uemail)
+        return self.cleaned_data
+    
+    def clean_username(self):
+        username = self.cleaned_data['username']
+        return username
+    
+    def clean_email(self):
+        email = self.cleaned_data['email']
+        return email
+    
+    def clean_password(self):
+        password = self.cleaned_data['password']
+        return password
+    
+    def save(self):
+        user = User.objects.create_user(**self.cleaned_data)
+        user.save()
+        return user
+
 
