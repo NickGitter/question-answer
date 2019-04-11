@@ -8,6 +8,7 @@ from django.views.decorators.http import require_GET
 from django.core.paginator import Paginator
 
 from qa.models import Question, Answer
+from qa.forms import AskForm, AnswerForm
 
 # Function for abstract pagination.
 def my_paginate(request, QuerySet):
