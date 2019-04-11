@@ -3,7 +3,7 @@
 """
 
 from django.shortcuts import render, get_object_or_404
-from django.http import HttpResponse, Http404
+from django.http import HttpResponse, Http404, HttpResponseRedirect
 from django.views.decorators.http import require_GET
 from django.core.paginator import Paginator
 
@@ -65,5 +65,19 @@ def one_question(request, id):
         'author': question.author,
         'answers': answers,
     })
+
+def ask_add(request, *args, **kwargs):
+    user = request.user
+    if request.method == "POST":
+        form = AskForm(request.POST)
+        if form.is_valid():
+            question = form.save(user)
+            url = question.get_absolute_url()
+            return HttpResponseRedirect(url)
+    else:
+        form = AskForm()
+        return render(request, 'ask_add.html', {
+            'form': form
+        })
 
 
