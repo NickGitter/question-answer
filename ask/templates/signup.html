@@ -1,0 +1,37 @@
+
+<!-- *** Signup page. *** -->
+
+{% extends "base_template.html" %}
+
+{% block TITLE %}
+Signup
+{% endblock %}
+
+{% block MAIN %}
+<main>
+    <h1>Signup</h1>
+    
+    <div>
+    {% for err in form.non_field_errors %}
+        <div>{{ err }}</div>
+    {% endfor %}
+    </div>
+    
+    <form method="post" action="/signup/">
+    {% csrf_token %}
+        <fieldset>
+        {% for field in form %}
+            <div class="ControlGroup {% if field.errors %}HasError{% endif %}">
+                <label>{{ field.label }}</label>
+                <div>{{ field }}</div>
+            </div>
+        {% endfor %}
+        </fieldset>
+        <div class="FormActions">
+            <button type="submit">Signup</button>
+        </div>
+    </form>
+</main>
+{% endblock %}
+
+
