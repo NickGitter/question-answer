@@ -18,4 +18,11 @@ def main_page(request, *args, **kwargs):
         'questions': questions,
     })
 
+@require_GET
+def popular_page(request, *args, **kwargs):
+    questions = Question.objects.popular()
+    return render(request, 'list_of_questions.html', {
+        'questions': questions,
+    })
+
 
