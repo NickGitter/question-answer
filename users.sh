@@ -31,8 +31,22 @@ fi
 if [[ $argsNum -eq 1 ]]
 then
     arg="$1"
+    # Is there an equals sign in the argument?
+    len=${#arg}
+    i=0
+    j=0 # The number of equal signs.
+    while [[ !( $i -eq $len ) ]]
+    do
+        if [[ "${arg:${i}:1}" == "=" ]]
+        then
+            # Counting equality signs in the argument.
+            let "j=j+1"
+        fi
+        let "i=i+1"
+    done
     
-    echo "$arg"
+    echo "arg = '$arg'"
+    echo "$j"
 fi
 
 
