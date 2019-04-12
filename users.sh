@@ -28,4 +28,11 @@ then
     exit 0
 fi
 
+if [[ $argsNum -eq 1 ]]
+then
+    arg="$1"
+    
+    echo "$arg"
+fi
+
 
