@@ -7,7 +7,11 @@ tableName="auth_user"
 
 attribsArr=(
     "id"
+    "is_superuser"
     "username"
+    "email"
+    "is_active"
+    "last_login"
 )
 
 attribs="${attribsArr[0]}"
