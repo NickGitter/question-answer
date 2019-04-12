@@ -57,7 +57,16 @@ then
         let "symbIndex=symbIndex+1"
     done
     
-    echo $symbIndex
+    leftFirstIndex=0
+    leftLastIndex=$symbIndex
+    let "rightFirstIndex=symbIndex+1"
+    rightLastIndex=$len
+    
+    leftArg="${arg:${leftFirstIndex}:${leftLastIndex}}"
+    rightArg="${arg:${rightFirstIndex}:${rightLastIndex}}"
+    
+    echo "'$leftArg'"
+    echo "'$rightArg'"
     
     
     
