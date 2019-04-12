@@ -5,6 +5,8 @@
 dbName="qa_db"
 tableName="auth_user"
 
+argsNum=$#
+
 
     
     
