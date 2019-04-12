@@ -47,6 +47,16 @@ then
     
     echo "arg = '$arg'"
     echo "$j"
+    
+    if [[ !( $j -eq 1 ) ]]
+    then
+        echo "Error"
+        exit 1
+    fi
+    
+    
+    
+    exit 0
 fi
 
 
