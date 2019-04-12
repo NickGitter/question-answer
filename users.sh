@@ -45,14 +45,19 @@ then
         let "i=i+1"
     done
     
-    echo "arg = '$arg'"
-    echo "$j"
-    
     if [[ !( $j -eq 1 ) ]]
     then
         echo "Error"
         exit 1
     fi
+    
+    symbIndex=0 # Index of the symbol "=".
+    while [[ "${arg:${symbIndex}:1}" != "=" ]]
+    do
+        let "symbIndex=symbIndex+1"
+    done
+    
+    echo $symbIndex
     
     
     
