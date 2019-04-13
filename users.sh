@@ -65,16 +65,14 @@ then
     leftArg="${arg:${leftFirstIndex}:${leftLastIndex}}"
     rightArg="${arg:${rightFirstIndex}:${rightLastIndex}}"
     
-    echo "'$leftArg'"
-    echo "'$rightArg'"
-    
     if [[ ( "$leftArg" == "" ) || ( "$rightArg" == "" ) ]]
     then
         echo "Error: incorrect argument."
         exit 1
     fi
     
-    
+    sudo mysql -uroot -e "select ${attribs} from ${dbName}.${tableName} \
+        where ${leftArg}='${rightArg}';"
     
     exit 0
 fi
