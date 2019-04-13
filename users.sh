@@ -83,4 +83,8 @@ then
     exit 0
 fi
 
+echo "Error: this script takes only one argument."
+printUsage
+exit 1
+
 
