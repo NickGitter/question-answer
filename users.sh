@@ -14,6 +14,10 @@ attribsArr=(
     "last_login"
 )
 
+printUsage() {
+    echo "Usage: ./ users.sh [ <column>=<value> ]"
+}
+
 attribs="${attribsArr[0]}"
 for iAttrib in ${attribsArr[@]:1:${#attribsArr[@]}}
 do
@@ -47,7 +51,8 @@ then
     
     if [[ !( $j -eq 1 ) ]]
     then
-        echo "Error"
+        echo "Error: incorrect argument."
+        printUsage
         exit 1
     fi
     
@@ -68,6 +73,7 @@ then
     if [[ ( "$leftArg" == "" ) || ( "$rightArg" == "" ) ]]
     then
         echo "Error: incorrect argument."
+        printUsage
         exit 1
     fi
     
