@@ -68,6 +68,12 @@ then
     echo "'$leftArg'"
     echo "'$rightArg'"
     
+    if [[ ( "$leftArg" == "" ) || ( "$rightArg" == "" ) ]]
+    then
+        echo "Error: incorrect argument."
+        exit 1
+    fi
+    
     
     
     exit 0
