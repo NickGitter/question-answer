@@ -32,16 +32,16 @@ body {
     height: 2rem;
 }
 
-.Login, .Signup, .CurrentUsername {
+.Login, .Signup, .CurrentUsername, .Logout {
     height: 1.2rem;
     margin-right: 2rem;
 }
 
-.Login, .Signup {
+.Login, .Signup, .Logout {
     border-bottom: 1px dashed black;
 }
 
-.Login > a, .Signup > a, .CurrentUsername > a {
+.Login > a, .Signup > a, .CurrentUsername > a, .Logout > a {
     text-decoration: none;
 }
 

@@ -18,7 +18,17 @@
         {% block TOP_MENU %}
         <div class="TopWrapper">
             <div class="UserPanel">
-                
+            {% if is_user %}
+                <div class="CurrentUser">
+                    <div class="CurrentUsername">
+                        <strong>{{ username }}</strong> 
+                        <span></span>
+                    </div>
+                    <div class="Logout">
+                        <a href="/logout/">Logout</a>
+                    </div>
+                </div>
+            {% else %}
                 <div class="AnonymousUser">
                     <div class="Login">
                         <a href="/login/">Login</a>
@@ -27,14 +37,7 @@
                         <a href="/signup/">Signup</a>
                     </div>
                 </div>
-                
-                <div class="CurrentUser">
-                    <div class="CurrentUsername">
-                        <strong>{{ username }}</strong> 
-                        <span></span>
-                    </div>
-                </div>
-                
+            {% endif %}
             </div>
             
         </div>
