@@ -5,7 +5,7 @@
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, 
             initial-scale=1.0, maximum-scale=2, minimum-scale=0.5" />
-        <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="/css/main.css" />
         <title>
             {% block TITLE %} Question-answer {% endblock %}
         </title>
@@ -17,6 +17,22 @@
         
         {% block TOP_MENU %}
         <div class="TopWrapper">
+            <div class="UserPanel">
+                
+                <div class="AnonymousUser">
+                    <div class="Login">
+                        <a href="/login/">Login</a>
+                    </div>
+                    <div class="Signup">
+                        <a href="/signup/">Signup</a>
+                    </div>
+                </div>
+                
+                <div class="CurrentUser">
+                    
+                </div>
+                
+            </div>
             
         </div>
         {% endblock %}
@@ -26,7 +42,7 @@
         {% endblock %}
         
         {% block FOOTER %}
-        <p>end.</p>
+        <p>---</p>
         {% endblock %}
         
     </body>

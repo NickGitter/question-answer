@@ -13,8 +13,37 @@ body {
 
 .TopWrapper {
     width: 100%;
-    height: 2rem;
+    height: 5rem;
     background-color: gray;
+}
+
+.UserPanel {
+    width: 100%;
+    height: 2rem;
+    background-color: orange;
+}
+
+.AnonymousUser {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: right;
+    width: 100%;
+    height: 2rem;
+}
+
+.Login, .Signup {
+    height: 1.2rem;
+    margin-right: 2rem;
+    border-bottom: 1px dashed black;
+}
+
+.Login > a, .Signup > a {
+    text-decoration: none;
+}
+
+.CurrentUser {
+    
 }
 
 
