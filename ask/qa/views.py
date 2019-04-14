@@ -27,11 +27,22 @@ def my_paginate(request, QuerySet):
         page = paginator.page(paginator.num_pages)
     return page
 
+def getUser(request):
+    user = request.user
+    is_user = False
+    if user.is_authenticated():
+        is_user = True
+    return {
+        'is_user': is_user,
+        'user': user,
+    }
+
 def my_test(request, *args, **kwargs):
     return HttpResponse('ok')
 
 @require_GET
 def main_page(request, *args, **kwargs):
+    user = getUser(request)
     questions = Question.objects.new()
     page = my_paginate(request, questions)
     paginator = page.paginator
@@ -40,6 +51,8 @@ def main_page(request, *args, **kwargs):
         'questions': page.object_list,
         'paginator': paginator,
         'page': page,
+        'username': user['user'].username,
+        'is_user': user['is_user'],
     })
 
 @require_GET
