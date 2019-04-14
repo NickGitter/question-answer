@@ -1,5 +1,6 @@
 /*
     *** Main css file for qa app. ***
+    * ☹ ☺ ☻ ☰ ⁂ ✘ ☑ ☒ ✪ ☆ ★ ☕ § ¬ ° ± µ ∠ ⊥ ≈ ≅ ≠ √ ∑ ∫ ∞ *
 */
 
 html, body, div, p {
@@ -19,11 +20,10 @@ body {
 
 .UserPanel {
     width: 100%;
-    height: 2rem;
     background-color: orange;
 }
 
-.AnonymousUser {
+.AnonymousUser, .CurrentUser {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -32,18 +32,17 @@ body {
     height: 2rem;
 }
 
-.Login, .Signup {
+.Login, .Signup, .CurrentUsername {
     height: 1.2rem;
     margin-right: 2rem;
+}
+
+.Login, .Signup {
     border-bottom: 1px dashed black;
 }
 
-.Login > a, .Signup > a {
+.Login > a, .Signup > a, .CurrentUsername > a {
     text-decoration: none;
-}
-
-.CurrentUser {
-    
 }
 
 
