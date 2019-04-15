@@ -25,6 +25,8 @@ main {
 }
 
 :root {
+    --userUsernameColor: yellow;
+    
     --userPanelBgColor: teal;
     --userPanelTextColor: white;
     
@@ -64,6 +66,10 @@ main {
     .Item > a, .NameItem > a {
     text-decoration: none;
     color: var( --userPanelTextColor );
+}
+
+.UserUsername {
+    color: var( --userUsernameColor );
 }
 
 .TopMenu {
