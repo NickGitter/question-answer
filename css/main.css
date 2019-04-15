@@ -14,8 +14,6 @@ body {
 
 .TopWrapper {
     width: 100%;
-    height: 5rem;
-    background-color: gray;
 }
 
 .UserPanel {
@@ -41,8 +39,46 @@ body {
     border-bottom: 1px dashed black;
 }
 
-.Login > a, .Signup > a, .CurrentUsername > a, .Logout > a {
+.Login > a, .Signup > a, .CurrentUsername > a, .Logout > a, 
+    .Item > a, .NameItem > a {
     text-decoration: none;
+    color: black;
+}
+
+.TopMenu {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+    height: 2.5rem;
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+
+.Item {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-left: 2rem;
+    margin-right: 0rem;
+    border-bottom: 3px solid orange;
+}
+
+.NameItem {
+    font-size: 1.2rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    margin-left: 2rem;
+    margin-right: 0rem;
+}
+
+.Item:hover {
+    border-bottom: 3px solid white;
+}
+
+.SearchItem {
+    margin-left: auto;
+    margin-right: 2rem;
 }
 
 
