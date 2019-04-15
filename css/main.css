@@ -12,13 +12,18 @@ body {
     font-size: 16px;
 }
 
+:root {
+    --userPanelBgColor: teal;
+    
+}
+
 .TopWrapper {
     width: 100%;
 }
 
 .UserPanel {
     width: 100%;
-    background-color: orange;
+    background-color: var( --userPanelBgColor );
 }
 
 .AnonymousUser, .CurrentUser {
@@ -61,7 +66,7 @@ body {
     font-weight: bold;
     margin-left: 2rem;
     margin-right: 0rem;
-    border-bottom: 3px solid orange;
+    border-bottom: 3px solid var( --userPanelBgColor );
 }
 
 .NameItem {
