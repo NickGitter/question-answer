@@ -52,8 +52,20 @@
                     <div class="Item">
                         <a href="/ask/">Ask</a>
                     </div>
-                    <div class="SearchItem">
-                        <input type="text" placeholder="Search" />
+                    <div class="SearchItem" title="Search questions">
+                        <form method="post" action="/search/">
+                        {% csrf_token %}
+                            <input type="text" placeholder="Search" />
+                            <!--
+                            {% for field in form %}
+                                <div>{{ field }}</div>
+                            {% endfor %}
+                            
+                            <div>
+                                <button type="submit">Search</button>
+                            </div>
+                            -->
+                        </form>
                     </div>
                 </div>
                 
