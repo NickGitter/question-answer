@@ -26,6 +26,7 @@ main {
 
 :root {
     --userUsernameColor: yellow;
+    --appNameColor: orange;
     
     --userPanelBgColor: teal;
     --userPanelTextColor: white;
@@ -65,7 +66,15 @@ main {
 .Login > a, .Signup > a, .CurrentUsername > a, .Logout > a, 
     .Item > a, .NameItem > a {
     text-decoration: none;
+}
+
+.Login > a, .Signup > a, .CurrentUsername > a, .Logout > a, 
+    .Item > a {
     color: var( --userPanelTextColor );
+}
+
+.NameItem > a {
+    color: var( --appNameColor );
 }
 
 .UserUsername {
