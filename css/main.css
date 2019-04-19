@@ -65,9 +65,13 @@ a {
 }
 
 .Login, .Signup, .Logout {
-    border-bottom: 1px solid var( --userPanelTextColor );
+    border-bottom: 1px solid var( --userPanelBgColor );
     padding-left: 0.25rem;
     padding-right: 0.25rem;
+}
+
+.Login:hover, .Signup:hover, .Logout:hover {
+    border-bottom: 1px solid var( --userPanelTextColor );
 }
 
 .Login > a, .Signup > a, .CurrentUsername > a, .Logout > a, 
