@@ -14,12 +14,21 @@ List of questions
     <div class=Columns>
         <div class="Column">
             {% for question in questions %}
-            <div>
-                <p>Question {{ question.pk }}</p>
-                <p>{{ question.title }}</p>
-                <p>Author: {{ question.author.username }}</p>
-                <div>
-                    <a href="{{ question.get_absolute_url }}">Open</a>
+            <div class="Question">
+                <div class="TitleForQuestion" title="Open: {{ question.title }}">
+                    <a href="{{ question.get_absolute_url }}">
+                        <strong>{{ question.title }}</strong>
+                    </a>
+                </div>
+                <div class="FooterForQuestion">
+                    <div>
+                        <a href="#" title="Author: {{ question.author.username }}">
+                        {{ question.author.username }}</a>
+                    </div>
+                    <div>|</div>
+                    <div>"added date"</div>
+                    <div>|</div>
+                    <div>"count of answers"</div>
                 </div>
             </div>
             {% endfor %}

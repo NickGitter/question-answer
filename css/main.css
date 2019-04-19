@@ -23,12 +23,20 @@ main {
     flex: 1;
 }
 
+a {
+    text-decoration: none;
+}
+
 :root {
     --userUsernameColor: yellow;
     --appNameColor: orange;
     
     --userPanelBgColor: teal;
     --userPanelTextColor: white;
+    
+    --questionBorderColor: LightSeaGreen;
+    --questionFooterColor: gray;
+    --questionBgHoverColor: PeachPuff;
     
     --footerBgColor: teal;
 }
@@ -60,11 +68,6 @@ main {
     border-bottom: 1px solid var( --userPanelTextColor );
     padding-left: 0.25rem;
     padding-right: 0.25rem;
-}
-
-.Login > a, .Signup > a, .CurrentUsername > a, .Logout > a, 
-    .Item > a, .NameItem > a {
-    text-decoration: none;
 }
 
 .Login > a, .Signup > a, .CurrentUsername > a, .Logout > a, 
@@ -137,7 +140,35 @@ main {
     flex: 0.6;
 }
 
+.Question {
+    margin: 0.5rem;
+    border: 2px solid var( --questionBorderColor );
+    border-radius: 1rem;
+}
 
+.Question:hover {
+    background-color: var( --questionBgHoverColor );
+}
+
+.TitleForQuestion {
+    padding: 0.5rem;
+}
+
+.FooterForQuestion {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: left;
+}
+
+.FooterForQuestion > div {
+    padding: 0.5rem;
+    color: var( --questionFooterColor );
+}
+
+.FooterForQuestion > div > a {
+    color: inherit;
+}
 
 .FootWrapper {
     display: flex;
