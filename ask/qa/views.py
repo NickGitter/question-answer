@@ -57,6 +57,7 @@ def main_page(request, *args, **kwargs):
 
 @require_GET
 def popular_page(request, *args, **kwargs):
+    user = getUser(request)
     questions = Question.objects.popular()
     page = my_paginate(request, questions)
     paginator = page.paginator
@@ -65,30 +66,34 @@ def popular_page(request, *args, **kwargs):
         'questions': page.object_list,
         'paginator': paginator,
         'page': page,
+        'username': user['user'].username,
+        'is_user': user['is_user'],
     })
 
 def ask_add(request, *args, **kwargs):
-    user = request.user
+    user = getUser(request)
     if request.method == "POST":
         form = AskForm(request.POST)
         if form.is_valid():
-            question = form.save(user)
+            question = form.save(user['user'])
             url = question.get_absolute_url()
             return HttpResponseRedirect(url)
     else:
         form = AskForm()
         return render(request, 'ask_add.html', {
-            'form': form
+            'form': form,
+            'username': user['user'].username,
+            'is_user': user['is_user'],
         })
 
 # The question page with form for added an answer.
 def answer_add(request, id):
-    user = request.user
+    user = getUser(request)
     question = get_object_or_404(Question, id = id)
     if request.method == "POST":
         form = AnswerForm(request.POST)
         if form.is_valid() == True:
-            answer = form.save(question, user)
+            answer = form.save(question, user['user'])
             url = '/question/%d/' % int(id)
             return HttpResponseRedirect(url)
         if form.is_valid() == False:
@@ -108,6 +113,8 @@ def answer_add(request, id):
             'author': question.author,
             'answers': answers,
             'form': form,
+            'username': user['user'].username,
+            'is_user': user['is_user'],
         })
 
 def signup(request, *args, **kwargs):
@@ -125,11 +132,13 @@ def signup(request, *args, **kwargs):
         else:
             return render(request, 'signup.html', {
             'form': form,
+            'is_user': False,
         })
     else:
         form = SignupForm()
         return render(request, 'signup.html', {
             'form': form,
+            'is_user': False,
         })
 
 def user_login(request, *args, **kwargs):
@@ -152,17 +161,20 @@ def user_login(request, *args, **kwargs):
             return render(request, 'login.html', {
                 'form': form,
                 'error': error,
+                'is_user': False,
             })
         else:
             return render(request, 'login.html', {
                 'form': form,
                 'error': error,
+                'is_user': False,
             })
     else:
         form = LoginForm()
         return render(request, 'login.html', {
             'form': form,
             'error': error,
+            'is_user': False,
         })
 
 def user_logout(request, *args, **kwargs):
