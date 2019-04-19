@@ -21,6 +21,7 @@ body {
 
 main {
     flex: 1;
+    margin-top: 6rem;
 }
 
 a {
@@ -43,6 +44,9 @@ a {
 
 .TopWrapper {
     width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
 }
 
 .UserPanel {
