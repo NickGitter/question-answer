@@ -12,7 +12,7 @@ List of questions
     <h1>List of questions</h1>
     
     <div class=Columns>
-        <div class="MiddleColumn">
+        <div class="Column">
             {% for question in questions %}
             <div>
                 <p>Question {{ question.pk }}</p>
@@ -25,7 +25,7 @@ List of questions
             {% endfor %}
         </div>
     </div>
-        
+    
     <nav>
         <ul>
         {% for i in paginator.page_range %}

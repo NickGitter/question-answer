@@ -133,7 +133,9 @@ main {
     justify-content: center;
 }
 
-
+.Columns > .Column {
+    flex: 0.6;
+}
 
 
 
