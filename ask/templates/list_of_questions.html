@@ -11,17 +11,19 @@ List of questions
 <main>
     <h1>List of questions</h1>
     
-    <div>
-        {% for question in questions %}
-        <div>
-            <p>Question {{ question.pk }}</p>
-            <p>{{ question.title }}</p>
-            <p>Author: {{ question.author.username }}</p>
+    <div class=Columns>
+        <div class="MiddleColumn">
+            {% for question in questions %}
             <div>
-                <a href="{{ question.get_absolute_url }}">Open</a>
+                <p>Question {{ question.pk }}</p>
+                <p>{{ question.title }}</p>
+                <p>Author: {{ question.author.username }}</p>
+                <div>
+                    <a href="{{ question.get_absolute_url }}">Open</a>
+                </div>
             </div>
+            {% endfor %}
         </div>
-        {% endfor %}
     </div>
         
     <nav>
@@ -37,8 +39,8 @@ List of questions
         {% endfor %}
         </ul>
     </nav>
-    
 </main>
+
 {% endblock %}
 
 
