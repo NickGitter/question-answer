@@ -7,7 +7,7 @@ html {
     height: 100%;
 }
 
-html, body, div, p {
+html, body, div, p, main {
     margin: 0;
     padding: 0;
 }
@@ -21,7 +21,6 @@ body {
 
 main {
     flex: 1;
-    padding: 0.5rem;
 }
 
 :root {
@@ -125,6 +124,16 @@ main {
     flex-direction: row;
     align-items: center;
 }
+
+.Columns {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+}
+
+
 
 
 
