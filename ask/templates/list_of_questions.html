@@ -9,14 +9,13 @@ List of questions
 
 {% block MAIN %}
 <main>
-    <h1>List of questions</h1>
     
     <div class=Columns>
         <div class="Column">
             {% for question in questions %}
             <div class="Question">
-                <div class="TitleForQuestion" title="Open: {{ question.title }}">
-                    <a href="{{ question.get_absolute_url }}">
+                <div class="TitleForQuestion">
+                    <a href="{{ question.get_absolute_url }}" title="Open: {{ question.title }}">
                         <strong>{{ question.title }}</strong>
                     </a>
                 </div>
