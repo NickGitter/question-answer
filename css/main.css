@@ -38,6 +38,7 @@ a {
     --questionBorderColor: LightSeaGreen;
     --questionFooterColor: gray;
     --questionBgHoverColor: PeachPuff;
+    --questionLinkColor: purple;
     
     --footerBgColor: teal;
 }
@@ -162,6 +163,10 @@ a {
 
 .TitleForQuestion {
     padding: 0.5rem;
+}
+
+.TitleForQuestion > a {
+    color: var( --questionLinkColor );
 }
 
 .FooterForQuestion {
