@@ -40,16 +40,16 @@
                     <div class="NameItem">
                         <a href="/" title="Question-answer app">Question<br />answer</a>
                     </div>
-                    <div class="Item">
+                    <div class="Item MainPage{% if is_page is 1 %}On{% else %}Off{% endif %}">
                         <a href="/">Main</a>
                     </div>
-                    <div class="Item">
+                    <div class="Item PopularPage{% if is_page is 2 %}On{% else %}Off{% endif %}">
                         <a href="/popular/">Popular</a>
                     </div>
-                    <div class="Item">
+                    <div class="Item CategoryPage{% if is_page is 3 %}On{% else %}Off{% endif %}">
                         <a href="#">Category</a>
                     </div>
-                    <div class="Item">
+                    <div class="Item AskPage{% if is_page is 4 %}On{% else %}Off{% endif %}">
                         <a href="/ask/">Ask</a>
                     </div>
                     <div class="SearchItem" title="Search questions">

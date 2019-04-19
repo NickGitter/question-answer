@@ -53,6 +53,7 @@ def main_page(request, *args, **kwargs):
         'page': page,
         'username': user['user'].username,
         'is_user': user['is_user'],
+        'is_page': 1,
     })
 
 @require_GET
@@ -68,6 +69,7 @@ def popular_page(request, *args, **kwargs):
         'page': page,
         'username': user['user'].username,
         'is_user': user['is_user'],
+        'is_page': 2,
     })
 
 def ask_add(request, *args, **kwargs):

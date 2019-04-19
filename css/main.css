@@ -47,6 +47,10 @@ a {
     border-bottom: 2px solid var( --userPanelTextColor );
 }
 
+.MainPageOff, .PopularPageOff, .CategoryPageOff, .AskPageOff {
+    border-bottom: 2px solid var( --userPanelBgColor );
+}
+
 .TopWrapper {
     width: 100%;
     position: fixed;
@@ -114,7 +118,6 @@ a {
     margin-right: 0rem;
     padding-left: 0.25rem;
     padding-right: 0.25rem;
-    border-bottom: 2px solid var( --userPanelBgColor );
 }
 
 .NameItem {
