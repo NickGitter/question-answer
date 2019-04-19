@@ -43,6 +43,10 @@ a {
     --footerBgColor: teal;
 }
 
+.MainPageOn, .PopularPageOn, .CategoryPageOn, .AskPageOn {
+    border-bottom: 2px solid var( --userPanelTextColor );
+}
+
 .TopWrapper {
     width: 100%;
     position: fixed;
