@@ -72,6 +72,16 @@ def popular_page(request, *args, **kwargs):
         'is_page': 2,
     })
 
+@require_GET
+def category_page(request, *args, **kwargs):
+    user = getUser(request)
+    
+    return render(request, 'categories.html', {
+        'username': user['user'].username,
+        'is_user': user['is_user'],
+        'is_page': 3,
+    })
+
 def ask_add(request, *args, **kwargs):
     user = getUser(request)
     if request.method == "POST":
