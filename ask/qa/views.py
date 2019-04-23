@@ -96,6 +96,7 @@ def ask_add(request, *args, **kwargs):
             'form': form,
             'username': user['user'].username,
             'is_user': user['is_user'],
+            'is_page': 4,
         })
 
 # The question page with form for added an answer.
