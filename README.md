@@ -2,7 +2,7 @@
 
 ## About this application
 
-Web application for answer questions.
+The web application to asking questions && answer questions. 
 
 ## How to run?
 
